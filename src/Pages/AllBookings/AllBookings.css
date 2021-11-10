@@ -1,0 +1,17 @@
+.banner-booking {
+    background-image: url(../../Images/allbookings.jpg);
+    background-attachment: fixed;
+    background-position: top;
+    background-size: 180vw 90vh;
+    background-repeat: no-repeat;
+}
+
+.banner-bs {
+    padding: 200px 0px;
+}
+
+.banner-booking h1 {
+    font-size: 60px;
+    letter-spacing: 10px;
+    font-weight: bold;
+}

@@ -1,0 +1,36 @@
+.banner {
+    background-image: url(../../Images/banner1.jpg);
+    background-attachment: fixed;
+    background-position: top;
+    background-size: 130vw 100vh;
+    background-repeat: no-repeat;
+}
+
+.banner-size {
+    padding: 280px 0px;
+}
+
+.banner-size h1 {
+    font-size: 60px;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.front-icon span {
+    font-size: 30px;
+    color: #0D6EFD;
+    background-color: #E4F5FF;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.front-icon:hover span {
+    color: white;
+    background-color: #0D6EFD;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.front-icon:hover h3 {
+    color: #0D6EFD;
+    transition: all 0.3s ease-in-out 0s;
+}

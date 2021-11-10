@@ -1,0 +1,12 @@
+.banner-register {
+    background-image: url(https://templates.envytheme.com/traip/default/assets/images/inner-page-header/inner-page-header-4.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: -100px;
+}
+
+.banner-rs {
+    padding: 208px 0px;
+}

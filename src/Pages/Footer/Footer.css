@@ -1,0 +1,6 @@
+.bg-image {
+    background-image: url(../../Images/footer-pic2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 30vh;
+    margin-top: 100px;
+}
