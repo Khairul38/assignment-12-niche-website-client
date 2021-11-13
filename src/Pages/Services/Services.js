@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import useServices from '../../Hooks/useServices/useServices';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import ServiceItem from '../Item/ServiceItem';
 import './Services.css';
 
@@ -8,6 +10,7 @@ const Services = () => {
     const { services } = useServices();
     return (
         <div>
+            <Header></Header>
             <div className="banner-service banner-ps mb-5 text-center text-white">
                 <h1>MOST POPULAR <span className="text-color fw-bold">PACKAGES</span></h1>
                 <h5>Select Your Best Package For Your Travel</h5>
@@ -21,6 +24,7 @@ const Services = () => {
                     </Row>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

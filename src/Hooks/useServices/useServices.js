@@ -4,11 +4,11 @@ import { useState } from 'react';
 const useServices = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('https://wicked-nightmare-49756.herokuapp.com/packages')
+        fetch('https://aqueous-stream-28542.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setServices(data));
     }, []);
-    return { services };
+    return { services, setServices };
 };
 
 export default useServices;

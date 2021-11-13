@@ -16,7 +16,7 @@ const Destinations = () => {
                 <div className="container my-5">
                     <Row xs={1} md={3} className="g-5 p-4">
                         {
-                            destinations.map(destination => <DestinationItem key={destination.key} destination={destination}></DestinationItem>)
+                            destinations.map(destination => <DestinationItem key={destination._id} destination={destination}></DestinationItem>)
                         }
                     </Row>
                 </div>

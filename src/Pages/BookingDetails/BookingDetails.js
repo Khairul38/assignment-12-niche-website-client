@@ -1,16 +1,17 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import './BookingDetails.css';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 const BookingDetails = () => {
     const { register, handleSubmit, reset } = useForm();
     const { bookingId } = useParams();
     const { services, allContext } = useAuth();
     const { user } = allContext;
-    const history = useHistory();
 
     const bookingData = services.find(service => service._id === bookingId);
 
@@ -18,17 +19,17 @@ const BookingDetails = () => {
         data.package = bookingData;
         data.status = 'Pending';
 
-        axios.post('https://wicked-nightmare-49756.herokuapp.com/bookings', data)
+        axios.post('https://aqueous-stream-28542.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Booking Processed Successfully');
                     reset();
-                    history.push('/myBookings');
                 }
             })
     };
     return (
-        <div className="">
+        <div>
+            <Header></Header>
             <div className="container my-5 row mx-auto align-items-center">
                 <div className="col-lg-8">
                     <img className="w-100" src={bookingData?.img} alt="" />
@@ -51,6 +52,7 @@ const BookingDetails = () => {
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

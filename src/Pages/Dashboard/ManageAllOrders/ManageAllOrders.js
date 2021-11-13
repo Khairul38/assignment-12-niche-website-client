@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import BookingItem from '../Item/BookingItem';
-import './AllBookings.css'
+import ManageOrderItem from '../../Item/ManageOrderItem';
+import './ManageAllOrders.css'
 
-const AllBookings = () => {
+const ManageAllOrders = () => {
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        fetch('https://wicked-nightmare-49756.herokuapp.com/bookings')
+        fetch('https://aqueous-stream-28542.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setBookings(data))
     }, [bookings])
@@ -16,19 +16,18 @@ const AllBookings = () => {
     const handleUpdateStatus = id => {
         const proceed = window.confirm('Are You Sure, You Want To Update');
         if (proceed) {
-            const url = `https://wicked-nightmare-49756.herokuapp.com/bookings/${id}`;
+            const url = `https://aqueous-stream-28542.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify({ status: 'Approved' })
+                body: JSON.stringify({ status: 'Shipped' })
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.modifiedCount > 0) {
                         alert('Status Update Successfully');
-                        // window.location.reload();
                     }
                 })
         }
@@ -37,7 +36,7 @@ const AllBookings = () => {
     const handleDeletePackage = id => {
         const proceed = window.confirm('Are You Sure, You Want To Cancel');
         if (proceed) {
-            const url = `https://wicked-nightmare-49756.herokuapp.com/bookings/${id}`;
+            const url = `https://aqueous-stream-28542.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -61,7 +60,7 @@ const AllBookings = () => {
                 <div className="container my-5">
                     <Row xs={1} md={3} className="g-5 p-4">
                         {
-                            bookings.map(booking => <BookingItem key={booking._id} booking={booking} handleDeletePackage={handleDeletePackage} handleUpdateStatus={handleUpdateStatus}></BookingItem>)
+                            bookings.map(booking => <ManageOrderItem key={booking._id} booking={booking} handleDeletePackage={handleDeletePackage} handleUpdateStatus={handleUpdateStatus}></ManageOrderItem>)
                         }
                     </Row>
                 </div>
@@ -70,4 +69,4 @@ const AllBookings = () => {
     );
 };
 
-export default AllBookings;
+export default ManageAllOrders;

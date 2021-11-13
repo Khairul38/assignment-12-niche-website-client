@@ -3,10 +3,10 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import useAuth from '../Hooks/useAuth/useAuth';
 
-const PrivateRoute = ({ children, ...rest }) => {
+const AdminRoute = ({ children, ...rest }) => {
     const { allContext } = useAuth();
-    const { user, isLoading} = allContext;
-    if (isLoading) {
+    const { user, admin, isLoading } = allContext;
+    if (!admin || isLoading) {
         return <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
             <CircularProgress />
         </Box>
@@ -14,8 +14,8 @@ const PrivateRoute = ({ children, ...rest }) => {
     return (
         <Route
             {...rest}
-            render={({ location }) => user.email ? children : <Redirect to={{
-                pathname: "/login",
+            render={({ location }) => user.email && admin ? children : <Redirect to={{
+                pathname: "/",
                 state: { from: location }
             }}></Redirect>}
         >
@@ -24,4 +24,4 @@ const PrivateRoute = ({ children, ...rest }) => {
     );
 };
 
-export default PrivateRoute;
+export default AdminRoute;

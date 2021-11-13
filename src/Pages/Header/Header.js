@@ -4,6 +4,7 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 import './Header.css';
 import logo1 from '../../Images/logo-1.png';
 import { HashLink } from 'react-router-hash-link';
+import { Button } from '@mui/material';
 
 const Header = () => {
     const { allContext } = useAuth();
@@ -41,7 +42,12 @@ const Header = () => {
                         </ul>
                         {user.email ?
                             <>
-                                <li className="navbar-nav nav-item dropdown me-3">
+                                <li className="navbar-nav nav-item me-3">
+                                    <HashLink className="nav-link" smooth to="/dashboard#">
+                                        Dashboard
+                                    </HashLink>
+                                </li>
+                                {/* <li className="navbar-nav nav-item dropdown me-3">
                                     <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Dashboard
                                     </Link>
@@ -50,13 +56,18 @@ const Header = () => {
                                         <li><HashLink className="dropdown-item" smooth to="/allBookings#">Manage All Bookings</HashLink></li>
                                         <li><HashLink className="dropdown-item" smooth to="/addPackage#">Add a New Package</HashLink></li>
                                     </ul>
-                                </li>
+                                </li> */}
                                 <h5 className="me-3 my-2 text-color">{user.displayName}</h5>
-                                <button onClick={logout} className="btn btn-primary">Logout</button>
+                                <Button
+                                    onClick={logout} variant="contained">Logout</Button>
                             </> :
                             <div className="d-flex gap-3">
-                                <Link className="btn btn-primary" to="/login" role="button">Login</Link>
-                                <Link className="btn btn-primary" to="/register" role="button">Register</Link>
+                                <Link to="/login"><Button
+                                    variant="contained">Login</Button>
+                                </Link>
+                                <Link to="/register" ><Button
+                                    variant="contained">Register</Button>
+                                </Link>
                             </div>}
                     </div>
                 </div>

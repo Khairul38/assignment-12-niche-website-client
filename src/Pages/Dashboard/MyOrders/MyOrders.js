@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import useAuth from '../../Hooks/useAuth/useAuth';
-import MyBookingItem from '../Item/MyBookingItem';
-import './MyBookings.css';
+import useAuth from '../../../Hooks/useAuth/useAuth';
+import MyOrderItem from '../../Item/MyOrderItem';
+import './MyOrders.css';
 
-const MyBookings = () => {
+const MyOrders = () => {
     const [bookings, setBookings] = useState([]);
     const { allContext } = useAuth();
     const { user } = allContext;
-    // console.log(user);
 
     useEffect(() => {
-        fetch('https://wicked-nightmare-49756.herokuapp.com/bookings')
+        fetch('https://aqueous-stream-28542.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => {
                 const myBooking = data.filter(booking => booking.email === user.email);
@@ -23,7 +22,7 @@ const MyBookings = () => {
     const handleDeletePackage = id => {
         const proceed = window.confirm('Are You Sure, You Want To Cancel');
         if (proceed) {
-            const url = `https://wicked-nightmare-49756.herokuapp.com/bookings/${id}`;
+            const url = `https://aqueous-stream-28542.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -40,14 +39,14 @@ const MyBookings = () => {
     return (
         <div>
             <div className="banner-myBooking banner-bs mb-5 text-center text-white">
-                <h1>MY <span className="text-color fw-bold">BOOKINGS</span></h1>
+                <h1>MY <span className="text-color fw-bold">ORDERS</span></h1>
                 <h5>YOU CAN SEE DETAILS INFORMATION</h5>
             </div>
             <div className="container">
                 <div className="container my-5">
                     <Row xs={1} md={3} className="g-5 p-4">
                         {
-                            bookings.map(booking => <MyBookingItem key={booking._id} booking={booking} handleDeletePackage={handleDeletePackage}></MyBookingItem>)
+                            bookings.map(booking => <MyOrderItem key={booking._id} booking={booking} handleDeletePackage={handleDeletePackage}></MyOrderItem>)
                         }
                     </Row>
                 </div>
@@ -56,4 +55,4 @@ const MyBookings = () => {
     );
 };
 
-export default MyBookings;
+export default MyOrders;

@@ -1,53 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import icon1 from '../../Images/icon/google-icon.png';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
-import './Login.css'
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import { Button } from '@mui/material';
 
 const Login = () => {
+    const [loginData, setLoginData] = useState({});
     const { allContext } = useAuth();
     const {
-        setUser,
-        setError,
-        setIsLoading,
-        loginUsingGoogle, error } = allContext;
+        loginUsingGoogle,
+        handleLogin,
+        error } = allContext;
 
     /* Redirect */
     const location = useLocation();
     const history = useHistory();
-    const redirect_url = location?.state?.from || '/';
+
+    /* Login data */
+    const handleOnChange = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+    }
 
     /* Google Login & Redirect */
     const handleGoogleLogin = () => {
-        loginUsingGoogle()
-            .then(result => {
-                setUser(result.user);
-                setError('');
-                history.push(redirect_url);
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-            .finally(() => setIsLoading(false));
+        loginUsingGoogle(location, history);
     }
 
+    /* Email+Password Login & Redirect */
+    const loginSubmit = (e) => {
+        e.preventDefault();
+        handleLogin(loginData.email, loginData.password, location, history);
+    }
     return (
-        <div className="banner-login banner-ls mx-auto">
-            <div className="d-login">
-                <div className="text-center mx-auto">
+        <>
+            <Header></Header>
+            <div className="container row mx-auto align-items-center g-4 mt-5">
+                <div className="col-md-7">
+                    <img className="img-fluid" src="https://disin-react.hibootstrap.com/images/login-bg.jpg" alt="" />
+                </div>
+                <div className=" col-md-5">
                     <h1>Login Account</h1>
-                    <br />
-                    {/* On Click */}
-                    <button onClick={handleGoogleLogin} className="btn btn-outline-primary mb-4">
-                        <img width="40px" src={icon1} alt="" /> <span className="fs-6 fw-bold p-3">Login with Google</span>
-                    </button>
-                    <span className="d-block text-danger">
-                        {error}
-                    </span>
-                    <h6>Don’t have an account? <Link to='/register'>Register</Link></h6>
+                    {/* On Submit */}
+                    <form onSubmit={loginSubmit} className="mt-5">
+                        <div className="mb-3">
+                            <label htmlFor="validationDefault02" className="form-label">Email</label>
+                            {/* On Blur */}
+                            <input onChange={handleOnChange} type="email" name="email" className="form-control" id="validationDefault02"
+                                placeholder="Email" aria-label="Email"
+                                autoComplete="email" required />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="validationDefault03" className="form-label">Password</label>
+                            {/* On Blur */}
+                            <input onChange={handleOnChange} type="password" name="password" className="form-control" id="validationDefault03"
+                                placeholder="Password"
+                                autoComplete="current-password" aria-label="Password" required />
+                            <div className="text-danger">
+                                {error}
+                            </div>
+                        </div>
+                        <div className="col-12 mb-3">
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="invalidCheck2" />
+                                <label className="form-check-label" htmlFor="invalidCheck2">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <h6>Don’t have an account? <Link to='/register'>Register</Link></h6>
+                        <div className="d-grid col-12 mt-3">
+                            <Button
+                                type="submit"
+                                variant="contained">
+                                LOGIN
+                            </Button>
+                        </div>
+                    </form>
+                    <div className="text-center mt-2">
+                        <h6>Or</h6>
+                        {/* On Click */}
+                        <Button onClick={handleGoogleLogin} variant="outlined"><img width="40px" src={icon1} alt="" /><span className="fw-bold px-3">Login with Google</span></Button>
+                    </div>
                 </div>
             </div>
-        </div >
+            <Footer></Footer>
+        </>
     );
 };
 

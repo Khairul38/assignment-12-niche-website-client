@@ -1,9 +1,7 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-import { HashLink } from 'react-router-hash-link';
-import './ServiceItem.css'
 
-const ServiceItem = (props) => {
+const ManageProductItem = (props) => {
     const { _id, img, name, description, price } = props.service;
     return (
         <div>
@@ -16,9 +14,10 @@ const ServiceItem = (props) => {
                             <p>{description}</p>
                         </div>
                         <div className="d-flex justify-content-between align-items-center">
-                            <HashLink smooth to={`/booking/${_id}#`}>
+                            {/* <HashLink smooth to={`/booking/${_id}#`}>
                                 <button type="button" className="btn btn-outline-primary btn-sm">Book Now</button>
-                            </HashLink>
+                            </HashLink> */}
+                            <button onClick={() => props.handleDeleteProduct(_id)} type="button" className="btn btn-outline-primary btn-sm">Delete</button>
                             <h4><span className="text-color">${price}</span></h4>
                         </div>
                     </Card.Body>
@@ -28,4 +27,4 @@ const ServiceItem = (props) => {
     );
 };
 
-export default ServiceItem;
+export default ManageProductItem;

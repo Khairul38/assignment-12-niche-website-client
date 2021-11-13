@@ -1,12 +1,13 @@
+import { Button } from '@mui/material';
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './AddPackage.css';
+import './AddProduct.css';
 
-const AddPackage = () => {
+const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('https://wicked-nightmare-49756.herokuapp.com/packages', data)
+        axios.post('https://aqueous-stream-28542.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Package Successfully Added');
@@ -16,16 +17,19 @@ const AddPackage = () => {
     };
     return (
         <div className="banner-addPackage banner-as add-packages text-center">
-            <h1 className="text-white">Please Add New Package</h1>
+            <h1 className="text-white">Please Add New Product</h1>
             <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
                 <textarea className="massage" {...register("description", { required: true })} placeholder="Description" />
                 <input type="number" {...register("price", { required: true })} placeholder="Price" />
                 <input {...register("img", { required: true })} placeholder="Image URL" />
-                <input className="btn btn-primary mt-4" type="submit" />
+
+                <Button sx={{ width: '200%', mt: 3 }}
+                    type="submit"
+                    variant="contained">ADD PRODUCT</Button>
             </form>
         </div>
     );
 };
 
-export default AddPackage;
+export default AddProduct;
