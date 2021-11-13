@@ -4,10 +4,8 @@ import AuthProvider from './Context/AuthProvider';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import OrderDetails from './Pages/OrderDetails/OrderDetails';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import Reviews from './Pages/Reviews/Reviews';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
-// import MyOrders from './Pages/MyOrders/MyOrders';
 import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Register/Register';
 import Products from './Pages/Products/Products';
@@ -28,9 +26,6 @@ function App() {
             <Route exact path="/products">
               <Products></Products>
             </Route>
-            <PrivateRoute path="/reviews">
-              <Reviews></Reviews>
-            </PrivateRoute>
             <Route path="/aboutUs">
               <AboutUs></AboutUs>
             </Route>

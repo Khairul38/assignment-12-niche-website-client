@@ -26,7 +26,7 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <div className="text-center">
+        <div style={{marginTop: '280px', marginBottom: '280px'}} className="text-center">
             <h1 className="mb-5">Make an Admin</h1>
             <form onSubmit={handleAdminSubmit}>
                 <TextField

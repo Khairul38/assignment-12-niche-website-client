@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { Button } from '@mui/material';
+import registerImg from '../../Images/register1.jpg';
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
@@ -42,7 +43,7 @@ const Register = () => {
             <Header></Header>
             <div className="container row mx-auto align-items-center g-4 mt-5">
                 <div className="col-md-7">
-                    <img className="img-fluid" src="https://disin-react.hibootstrap.com/images/signup-bg.jpg" alt="" />
+                    <img className="img-fluid" src={registerImg} alt="" />
                 </div>
                 <div className=" col-md-5">
                     <h1>Register an Account</h1>

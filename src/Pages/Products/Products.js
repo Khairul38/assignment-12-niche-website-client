@@ -13,7 +13,7 @@ const Products = () => {
             <Header></Header>
             <div className="banner-product banner-ps mb-5 text-center text-white">
                 <h1>MOST POPULAR <span className="text-color fw-bold">PRODUCTS</span></h1>
-                <h5>Select Your Best Product For Your Travel</h5>
+                <h5>SELECT THE BEST PRODUCT FOR YOU</h5>
             </div>
             <div className="container">
                 <div className="container my-5">

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Pay = () => {
     return (
-        <div>
-            <h1>Payment Coming Soon</h1>
+        <div style={{ marginTop: '320px', marginBottom: '320px', textAlign: 'center' }}>
+            <h1>PAYMENT COMING SOON</h1>
         </div>
     );
 };

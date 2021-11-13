@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import { Button } from '@mui/material';
+import loginImg from '../../Images/main-home-banner-01.jpg'
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -40,9 +41,9 @@ const Login = () => {
     return (
         <>
             <Header></Header>
-            <div className="container row mx-auto align-items-center g-4 mt-5">
+            <div className="container row mx-auto align-items-center g-4 my-5">
                 <div className="col-md-7">
-                    <img className="img-fluid" src="https://disin-react.hibootstrap.com/images/login-bg.jpg" alt="" />
+                    <img className="img-fluid" src={loginImg} alt="" />
                 </div>
                 <div className=" col-md-5">
                     <h1>Login Account</h1>

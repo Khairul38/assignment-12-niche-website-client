@@ -1,13 +1,12 @@
 .banner-product {
     background-image: url(../../Images/banner2.jpg);
-    background-attachment: fixed;
-    background-position: top;
-    background-size: 180vw 90vh;
+    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 .banner-ps {
-    padding: 200px 0px;
+    padding: 300px 0px;
 }
 
 .banner-product h1 {

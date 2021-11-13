@@ -13,7 +13,7 @@ const Header = () => {
         <div className="sticky-top">
             <nav className="navbar navbar-expand-md navbar-light bg-light">
                 <div className="container-fluid">
-                    <HashLink className="navbar-brand" to="/#">
+                    <HashLink className="navbar-brand me-5" to="/#">
                         <img src={logo1} alt="" />
                     </HashLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,11 +30,6 @@ const Header = () => {
                                 </HashLink>
                             </li>
                             <li className="nav-item">
-                                <HashLink className="nav-link" smooth to="/reviews#">
-                                    Reviews
-                                </HashLink>
-                            </li>
-                            <li className="nav-item">
                                 <HashLink className="nav-link" smooth to="/aboutUs#">
                                     About Us
                                 </HashLink>
@@ -47,16 +42,6 @@ const Header = () => {
                                         Dashboard
                                     </HashLink>
                                 </li>
-                                {/* <li className="navbar-nav nav-item dropdown me-3">
-                                    <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dashboard
-                                    </Link>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><HashLink className="dropdown-item" smooth to="/myOrders#">My Orders</HashLink></li>
-                                        <li><HashLink className="dropdown-item" smooth to="/allOrders#">Manage All Orders</HashLink></li>
-                                        <li><HashLink className="dropdown-item" smooth to="/addProduct#">Add a New Product</HashLink></li>
-                                    </ul>
-                                </li> */}
                                 <h5 className="me-3 my-2 text-color">{user.displayName}</h5>
                                 <Button
                                     onClick={logout} variant="contained">Logout</Button>

@@ -38,7 +38,7 @@ const MyOrders = () => {
     };
     return (
         <div>
-            <div className="banner-myOrder banner-bs mb-5 text-center text-white">
+            <div className="banner-myOrder banner-bs mb-5 text-center">
                 <h1>MY <span className="text-color fw-bold">ORDERS</span></h1>
                 <h5>YOU CAN SEE DETAILS INFORMATION</h5>
             </div>

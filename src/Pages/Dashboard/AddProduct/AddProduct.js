@@ -17,9 +17,9 @@ const AddProduct = () => {
     };
     return (
         <div className="banner-addProduct banner-as add-products text-center">
-            <h1 className="text-white">Please Add New Product</h1>
+            <h1>Please Add New Product</h1>
             <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
+                <input {...register("name", { required: true })} placeholder="Name" />
                 <textarea className="massage" {...register("description", { required: true })} placeholder="Description" />
                 <input type="number" {...register("price", { required: true })} placeholder="Price" />
                 <input {...register("img", { required: true })} placeholder="Image URL" />
