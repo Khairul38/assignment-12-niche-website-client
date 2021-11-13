@@ -38,8 +38,8 @@ const OrderDetails = () => {
                     <h4><span className="text-color">${orderData?.price}</span></h4>
                 </div>
                 <div className="col-lg-4 text-center place-order">
-                    <h1>Buy This Tour</h1>
-                    <p>Arrange your trip in advance - book this tour now!</p>
+                    <h1>Buy This Product</h1>
+                    <p>Please provide us valid information here</p>
                     <form className="order-form d-block" onSubmit={handleSubmit(onSubmit)}>
 
                         <input defaultValue={user.displayName} {...register("name", { required: true })} />
