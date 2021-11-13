@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const useServices = () => {
-    const [services, setServices] = useState([]);
+const useProducts = () => {
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch('https://aqueous-stream-28542.herokuapp.com/products')
             .then(res => res.json())
-            .then(data => setServices(data));
+            .then(data => setProducts(data));
     }, []);
-    return { services, setServices };
+    return { products, setProducts };
 };
 
-export default useServices;
+export default useProducts;

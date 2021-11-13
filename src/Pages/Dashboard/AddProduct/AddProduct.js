@@ -10,13 +10,13 @@ const AddProduct = () => {
         axios.post('https://aqueous-stream-28542.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Package Successfully Added');
+                    alert('Product Successfully Added');
                     reset();
                 }
             })
     };
     return (
-        <div className="banner-addPackage banner-as add-packages text-center">
+        <div className="banner-addProduct banner-as add-products text-center">
             <h1 className="text-white">Please Add New Product</h1>
             <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />

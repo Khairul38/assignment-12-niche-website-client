@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
-import useServices from '../../../Hooks/useServices/useServices';
+import useProducts from '../../../Hooks/useProducts/useProducts';
 import ManageProductItem from '../../Item/ManageProductItem';
 
 const ManageProducts = () => {
-    const { services, setServices } = useServices();
+    const { products, setProducts } = useProducts();
 
 
     // Delete a Product
@@ -19,15 +19,15 @@ const ManageProducts = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert('Product Delete Successfully');
-                        const remainingProducts = services.filter(service => service._id !== id);
-                        setServices(remainingProducts);
+                        const remainingProducts = products.filter(product => product._id !== id);
+                        setProducts(remainingProducts);
                     };
                 });
         };
     };
     return (
         <div>
-            <div className="banner-service banner-ps mb-5 text-center text-white">
+            <div className="banner-product banner-ps mb-5 text-center text-white">
                 <h1>MANAGE <span className="text-color fw-bold">PRODUCTS</span></h1>
                 <h5>ADMIN CAN HANDLE THIS</h5>
             </div>
@@ -35,7 +35,7 @@ const ManageProducts = () => {
                 <div className="container my-5">
                     <Row xs={1} md={3} className="g-5 p-4">
                         {
-                            services.map(service => <ManageProductItem key={service._id} service={service} handleDeleteProduct={handleDeleteProduct}></ManageProductItem>)
+                            products.map(product => <ManageProductItem key={product._id} product={product} handleDeleteProduct={handleDeleteProduct}></ManageProductItem>)
                         }
                     </Row>
                 </div>

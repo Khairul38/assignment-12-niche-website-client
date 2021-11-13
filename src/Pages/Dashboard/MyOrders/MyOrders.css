@@ -1,4 +1,4 @@
-.banner-myBooking {
+.banner-myOrder {
     background-image: url(../../../Images/mybookings.jpg);
     background-attachment: fixed;
     background-position: center;
@@ -10,7 +10,7 @@
     padding: 200px 0px;
 }
 
-.banner-myBooking h1 {
+.banner-myOrder h1 {
     font-size: 60px;
     letter-spacing: 10px;
     font-weight: bold;

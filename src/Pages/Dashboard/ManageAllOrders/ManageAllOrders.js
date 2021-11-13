@@ -4,13 +4,13 @@ import ManageOrderItem from '../../Item/ManageOrderItem';
 import './ManageAllOrders.css'
 
 const ManageAllOrders = () => {
-    const [bookings, setBookings] = useState([]);
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         fetch('https://aqueous-stream-28542.herokuapp.com/orders')
             .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [bookings])
+            .then(data => setOrders(data))
+    }, [orders])
 
     // Update Status
     const handleUpdateStatus = id => {
@@ -32,8 +32,8 @@ const ManageAllOrders = () => {
                 })
         }
     }
-    // Delete a Package
-    const handleDeletePackage = id => {
+    // Delete a Product
+    const handleDeleteProduct = id => {
         const proceed = window.confirm('Are You Sure, You Want To Cancel');
         if (proceed) {
             const url = `https://aqueous-stream-28542.herokuapp.com/orders/${id}`;
@@ -43,24 +43,24 @@ const ManageAllOrders = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('Package Cancel Successfully');
-                        const remainingBookings = bookings.filter(booking => booking._id !== id);
-                        setBookings(remainingBookings);
+                        alert('Product Cancel Successfully');
+                        const remainingOrders = orders.filter(order => order._id !== id);
+                        setOrders(remainingOrders);
                     };
                 });
         };
     };
     return (
         <div>
-            <div className="banner-booking banner-bs mb-5 text-center text-white">
-                <h1>MANAGE ALL <span className="text-color fw-bold">BOOKINGS</span></h1>
+            <div className="banner-order banner-bs mb-5 text-center text-white">
+                <h1>MANAGE ALL <span className="text-color fw-bold">ORDERS</span></h1>
                 <h5>ONLY ADMIN CAN HANDEL THIS</h5>
             </div>
             <div className="container">
                 <div className="container my-5">
                     <Row xs={1} md={3} className="g-5 p-4">
                         {
-                            bookings.map(booking => <ManageOrderItem key={booking._id} booking={booking} handleDeletePackage={handleDeletePackage} handleUpdateStatus={handleUpdateStatus}></ManageOrderItem>)
+                            orders.map(order => <ManageOrderItem key={order._id} order={order} handleDeleteProduct={handleDeleteProduct} handleUpdateStatus={handleUpdateStatus}></ManageOrderItem>)
                         }
                     </Row>
                 </div>

@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { Avatar, Rating } from '@mui/material';
 
-const DestinationItem = (props) => {
-    const { name, email, description, rating, img } = props.destination;
+const ReviewItem = (props) => {
+    const { name, email, description, rating, img } = props.review;
     return (
         <div>
             <Col className="shadow-lg">
@@ -33,4 +33,4 @@ const DestinationItem = (props) => {
     );
 };
 
-export default DestinationItem;
+export default ReviewItem;

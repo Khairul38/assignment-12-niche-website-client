@@ -84,7 +84,7 @@ function Dashboard(props) {
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link style={{ textDecoration: 'none' }} to="/packages">
+                <Link style={{ textDecoration: 'none' }} to="/products">
                     <ListItem button>
                         <ListItemIcon>
                             <AddShoppingCartIcon color="primary" />

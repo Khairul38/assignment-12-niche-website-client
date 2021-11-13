@@ -2,15 +2,15 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './Context/AuthProvider';
 import AboutUs from './Pages/AboutUs/AboutUs';
-import BookingDetails from './Pages/BookingDetails/BookingDetails';
+import OrderDetails from './Pages/OrderDetails/OrderDetails';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import Destinations from './Pages/Destinations/Destinations';
+import Reviews from './Pages/Reviews/Reviews';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
-// import MyBookings from './Pages/MyBookings/MyBookings';
+// import MyOrders from './Pages/MyOrders/MyOrders';
 import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Register/Register';
-import Services from './Pages/Services/Services';
+import Products from './Pages/Products/Products';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
@@ -25,11 +25,11 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route exact path="/packages">
-              <Services></Services>
+            <Route exact path="/products">
+              <Products></Products>
             </Route>
-            <PrivateRoute path="/destinations">
-              <Destinations></Destinations>
+            <PrivateRoute path="/reviews">
+              <Reviews></Reviews>
             </PrivateRoute>
             <Route path="/aboutUs">
               <AboutUs></AboutUs>
@@ -43,8 +43,8 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/booking/:bookingId">
-              <BookingDetails></BookingDetails>
+            <PrivateRoute path="/order/:orderId">
+              <OrderDetails></OrderDetails>
             </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>

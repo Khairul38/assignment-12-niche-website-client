@@ -25,13 +25,13 @@ const Header = () => {
                                 <HashLink className="nav-link active" aria-current="page" smooth to="/home#">Home</HashLink>
                             </li>
                             <li className="nav-item">
-                                <HashLink className="nav-link" smooth to="/packages#">
-                                    Packages
+                                <HashLink className="nav-link" smooth to="/products#">
+                                    Products
                                 </HashLink>
                             </li>
                             <li className="nav-item">
-                                <HashLink className="nav-link" smooth to="/destinations#">
-                                    Destinations
+                                <HashLink className="nav-link" smooth to="/reviews#">
+                                    Reviews
                                 </HashLink>
                             </li>
                             <li className="nav-item">
@@ -52,9 +52,9 @@ const Header = () => {
                                         Dashboard
                                     </Link>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><HashLink className="dropdown-item" smooth to="/myBookings#">My Bookings</HashLink></li>
-                                        <li><HashLink className="dropdown-item" smooth to="/allBookings#">Manage All Bookings</HashLink></li>
-                                        <li><HashLink className="dropdown-item" smooth to="/addPackage#">Add a New Package</HashLink></li>
+                                        <li><HashLink className="dropdown-item" smooth to="/myOrders#">My Orders</HashLink></li>
+                                        <li><HashLink className="dropdown-item" smooth to="/allOrders#">Manage All Orders</HashLink></li>
+                                        <li><HashLink className="dropdown-item" smooth to="/addProduct#">Add a New Product</HashLink></li>
                                     </ul>
                                 </li> */}
                                 <h5 className="me-3 my-2 text-color">{user.displayName}</h5>

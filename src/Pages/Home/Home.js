@@ -1,17 +1,17 @@
 import React from 'react';
 import { Carousel, Row } from 'react-bootstrap';
-import useServices from '../../Hooks/useServices/useServices';
+import useProducts from '../../Hooks/useProducts/useProducts';
 import './Home.css';
-import DestinationItem from '../Item/DestinationItem';
-import ServiceItem from '../Item/ServiceItem';
-import useDestinations from '../../Hooks/useDestinations/useDestinations';
+import ReviewItem from '../Item/ReviewItem';
+import ProductItem from '../Item/ProductItem';
+import useReviews from '../../Hooks/useReviews/useReviews';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 const Home = () => {
-    const { services } = useServices();
-    const { destinations } = useDestinations();
-    const newDestinations = destinations.slice(0, 6)
+    const { products } = useProducts();
+    const newProducts = products.slice(0, 6)
+    const { reviews } = useReviews();
 
     return (
         <div>
@@ -22,13 +22,13 @@ const Home = () => {
             </div>
             <div className="container">
                 <div className="my-5 text-center">
-                    <h1 className="fw-bold">MOST POPULAR <span className="text-color">PACKAGES</span> </h1>
-                    <h5>Select Your Best Package For Your Travel</h5>
+                    <h1 className="fw-bold">MOST POPULAR <span className="text-color">PRODUCTS</span> </h1>
+                    <h5>Select Your Best Product For Your Travel</h5>
                 </div>
                 <div className="container">
                     <Row xs={1} md={3} className="g-5 mb-5 p-4">
                         {
-                            services.map(service => <ServiceItem key={service._id} service={service}></ServiceItem>)
+                            newProducts.map(product => <ProductItem key={product._id} product={product}></ProductItem>)
                         }
                     </Row>
                 </div>
@@ -72,13 +72,13 @@ const Home = () => {
             </div>
             <div className="container">
                 <div className="my-5 text-center">
-                    <h1 className="fw-bold">CHOOSE THE <span className="text-color">DESTINATION</span></h1>
+                    <h1 className="fw-bold">CHOOSE THE <span className="text-color">REVIEW</span></h1>
                     <h5>Just Right For Your Vacation</h5>
                 </div>
                 <div className="container my-5">
                     <Row xs={1} md={3} className="g-5 p-4">
                         {
-                            newDestinations.map(destination => <DestinationItem key={destination._id} destination={destination}></DestinationItem>)
+                            reviews.map(review => <ReviewItem key={review._id} review={review}></ReviewItem>)
                         }
                     </Row>
                 </div>

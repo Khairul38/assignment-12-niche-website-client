@@ -21,7 +21,7 @@ const Review = () => {
             })
     };
     return (
-        <div className="banner-addPackage banner-as add-packages text-center">
+        <div className="banner-addProduct banner-as add-products text-center">
             <h1 className="text-white">PROVIDE YOUR VALUABLE REVIEW</h1>
             <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
                 <input defaultValue={user.displayName} {...register("name", { required: true })} />

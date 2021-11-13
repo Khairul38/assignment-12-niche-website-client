@@ -3,26 +3,26 @@ import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth/useAuth';
-import './BookingDetails.css';
+import './OrderDetails.css';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-const BookingDetails = () => {
+const OrderDetails = () => {
     const { register, handleSubmit, reset } = useForm();
-    const { bookingId } = useParams();
-    const { services, allContext } = useAuth();
+    const { orderId } = useParams();
+    const { products, allContext } = useAuth();
     const { user } = allContext;
 
-    const bookingData = services.find(service => service._id === bookingId);
+    const orderData = products.find(product => product._id === orderId);
 
     const onSubmit = data => {
-        data.package = bookingData;
+        data.product = orderData;
         data.status = 'Pending';
 
         axios.post('https://aqueous-stream-28542.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('Booking Processed Successfully');
+                    alert('Order Processed Successfully');
                     reset();
                 }
             })
@@ -32,15 +32,15 @@ const BookingDetails = () => {
             <Header></Header>
             <div className="container my-5 row mx-auto align-items-center">
                 <div className="col-lg-8">
-                    <img className="w-100" src={bookingData?.img} alt="" />
-                    <h1 className=" fw-bold text-color mt-3">{bookingData?.name}</h1>
-                    <p>{bookingData?.description}</p>
-                    <h4><span className="text-color">${bookingData?.price}</span>/Person</h4>
+                    <img className="w-100" src={orderData?.img} alt="" />
+                    <h1 className=" fw-bold text-color mt-3">{orderData?.name}</h1>
+                    <p>{orderData?.description}</p>
+                    <h4><span className="text-color">${orderData?.price}</span></h4>
                 </div>
-                <div className="col-lg-4 text-center place-booking">
-                    <h1>Book This Tour</h1>
+                <div className="col-lg-4 text-center place-order">
+                    <h1>Buy This Tour</h1>
                     <p>Arrange your trip in advance - book this tour now!</p>
-                    <form className="booking-form d-block" onSubmit={handleSubmit(onSubmit)}>
+                    <form className="order-form d-block" onSubmit={handleSubmit(onSubmit)}>
 
                         <input defaultValue={user.displayName} {...register("name", { required: true })} />
 
@@ -48,7 +48,7 @@ const BookingDetails = () => {
                         <input placeholder="Address" defaultValue="" {...register("address", { required: true })} />
                         <input placeholder="City" defaultValue="" {...register("city", { required: true })} />
                         <input placeholder="Phone number" type="number" defaultValue="" {...register("phone", { required: true })} />
-                        <button className="btn btn-primary" type="submit">Place Booking</button>
+                        <button className="btn btn-primary" type="submit">Place Order</button>
                     </form>
                 </div>
             </div>
@@ -57,4 +57,4 @@ const BookingDetails = () => {
     );
 };
 
-export default BookingDetails;
+export default OrderDetails;

@@ -1,4 +1,4 @@
-.banner-addPackage {
+.banner-addProduct {
     background-image: url(https://setsail.qodeinteractive.com/wp-content/uploads/2018/09/skiing-parallax-1.jpg);
     background-attachment: fixed;
     background-position: center;
@@ -11,7 +11,7 @@
     padding: 100px 0px;
 }
 
-.add-packages form {
+.add-products form {
     display: inline-flex;
     flex-direction: column;
     padding: 50px 150px;
@@ -20,7 +20,7 @@
     border-radius: 20px;
 }
 
-.add-packages form input, .massage {
+.add-products form input, .massage {
     width: 200%;
     margin-bottom: 15px;
     padding: 10px;
