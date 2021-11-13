@@ -7,13 +7,16 @@ import './AddProduct.css';
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('https://aqueous-stream-28542.herokuapp.com/products', data)
-            .then(res => {
-                if (res.data.insertedId) {
-                    alert('Product Successfully Added');
-                    reset();
-                }
-            })
+        const proceed = window.confirm('Are You Sure, You Want To Add Product');
+        if (proceed) {
+            axios.post('https://aqueous-stream-28542.herokuapp.com/products', data)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        alert('Product Successfully Added');
+                        reset();
+                    }
+                })
+        }
     };
     return (
         <div className="banner-addProduct banner-as add-products text-center">
