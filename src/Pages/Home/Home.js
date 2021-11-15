@@ -14,6 +14,12 @@ const Home = () => {
     const newProducts = products.slice(0, 6)
     const { reviews } = useReviews();
 
+    if (loading) {
+        return <Box sx={{ display: 'flex', justifyContent: 'center', my: 50 }}>
+            <CircularProgress size={150} sx={{ color: '#EC9C31' }} />
+        </Box>
+    }
+
     return (
         <div>
             <Header></Header>

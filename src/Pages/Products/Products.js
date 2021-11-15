@@ -9,11 +9,6 @@ import './Products.css';
 
 const Products = () => {
     const { products, loading } = useProducts();
-    if (loading) {
-        return <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
-            <CircularProgress sx={{ color: '#EC9C31' }} />
-        </Box>
-    }
     return (
         <div>
             <Header></Header>
@@ -21,15 +16,20 @@ const Products = () => {
                 <h1>MOST POPULAR <span className="text-color fw-bold">PRODUCTS</span></h1>
                 <h5>SELECT THE BEST PRODUCT FOR YOU</h5>
             </div>
-            <div className="container">
-                <div className="container my-5">
-                    <Row xs={1} md={3} className="g-5 p-4">
-                        {
-                            products.map(product => <ProductItem key={product._id} product={product}></ProductItem>)
-                        }
-                    </Row>
-                </div>
-            </div>
+            {loading ?
+                <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
+                    <CircularProgress sx={{ color: '#EC9C31' }} />
+                </Box>
+                :
+                <div className="container">
+                    <div className="container my-5">
+                        <Row xs={1} md={3} className="g-5 p-4">
+                            {
+                                products.map(product => <ProductItem key={product._id} product={product}></ProductItem>)
+                            }
+                        </Row>
+                    </div>
+                </div>}
             <Footer></Footer>
         </div>
     );
