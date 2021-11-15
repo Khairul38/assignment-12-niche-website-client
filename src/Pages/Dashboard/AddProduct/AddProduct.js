@@ -1,11 +1,15 @@
-import { Button } from '@mui/material';
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../Hooks/useAuth/useAuth';
 import './AddProduct.css';
 
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
+
+    const { allContext } = useAuth();
+    const { ColorButton } = allContext;
+
     const onSubmit = data => {
         const proceed = window.confirm('Are You Sure, You Want To Add Product');
         if (proceed) {
@@ -27,9 +31,9 @@ const AddProduct = () => {
                 <input type="number" {...register("price", { required: true })} placeholder="Price" />
                 <input {...register("img", { required: true })} placeholder="Image URL" />
 
-                <Button sx={{ width: '200%', mt: 3 }}
+                <ColorButton sx={{ width: '200%', mt: 3 }}
                     type="submit"
-                    variant="contained">ADD PRODUCT</Button>
+                    variant="contained">ADD PRODUCT</ColorButton>
             </form>
         </div>
     );

@@ -4,11 +4,10 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 import './Header.css';
 import logo1 from '../../Images/logo-1.png';
 import { HashLink } from 'react-router-hash-link';
-import { Button } from '@mui/material';
 
 const Header = () => {
     const { allContext } = useAuth();
-    const { user, logout } = allContext;
+    const { user, ColorButton, logout } = allContext;
     return (
         <div className="sticky-top">
             <nav className="navbar navbar-expand-md navbar-light bg-light">
@@ -43,15 +42,15 @@ const Header = () => {
                                     </HashLink>
                                 </li>
                                 <h5 className="me-3 my-2 text-color">{user.displayName}</h5>
-                                <Button
-                                    onClick={logout} variant="contained">Logout</Button>
+                                <ColorButton
+                                    onClick={logout} variant="contained">Logout</ColorButton>
                             </> :
                             <div className="d-flex gap-3">
-                                <Link to="/login"><Button
-                                    variant="contained">Login</Button>
+                                <Link to="/login"><ColorButton
+                                    variant="contained">Login</ColorButton>
                                 </Link>
-                                <Link to="/register" ><Button
-                                    variant="contained">Register</Button>
+                                <Link to="/register" ><ColorButton
+                                    variant="contained">Register</ColorButton>
                                 </Link>
                             </div>}
                     </div>

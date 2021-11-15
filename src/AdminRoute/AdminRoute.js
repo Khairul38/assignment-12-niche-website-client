@@ -5,10 +5,10 @@ import useAuth from '../Hooks/useAuth/useAuth';
 
 const AdminRoute = ({ children, ...rest }) => {
     const { allContext } = useAuth();
-    const { user, admin, isLoading } = allContext;
-    if (!admin || isLoading) {
+    const { user, admin, loading } = allContext;
+    if (loading) {
         return <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
-            <CircularProgress />
+            <CircularProgress sx={{ color: '#EC9C31' }} />
         </Box>
     }
     return (

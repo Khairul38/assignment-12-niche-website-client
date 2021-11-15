@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import useProducts from '../../Hooks/useProducts/useProducts';
 import './Home.css';
+import { Box, CircularProgress } from '@mui/material';
 import ReviewItem from '../Item/ReviewItem';
 import ProductItem from '../Item/ProductItem';
 import useReviews from '../../Hooks/useReviews/useReviews';
@@ -9,7 +10,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 const Home = () => {
-    const { products } = useProducts();
+    const { products, loading } = useProducts();
     const newProducts = products.slice(0, 6)
     const { reviews } = useReviews();
 
@@ -25,13 +26,17 @@ const Home = () => {
                     <h1 className="fw-bold">MOST POPULAR <span className="text-color">PRODUCTS</span> </h1>
                     <h5>SELECT THE BEST PRODUCT FOR YOU</h5>
                 </div>
-                <div className="container">
+                {loading ? 
+                    <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
+                        <CircularProgress sx={{ color: '#EC9C31'}} />
+                    </Box>
+                :<div className="container">
                     <Row xs={1} md={3} className="g-5 mb-5 p-4">
                         {
                             newProducts.map(product => <ProductItem key={product._id} product={product}></ProductItem>)
                         }
                     </Row>
-                </div>
+                </div>}
             </div>
             <div className="my-5">
                 <Carousel variant="dark">

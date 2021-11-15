@@ -4,14 +4,13 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { Button } from '@mui/material';
 import registerImg from '../../Images/register1.jpg';
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
     const { allContext } = useAuth();
     const {
-        loginUsingGoogle,
+        loginUsingGoogle, ColorButton,
         handleRegistration,
         error } = allContext;
 
@@ -83,17 +82,17 @@ const Register = () => {
                         </div>
                         <h6>Already have an account? <Link to='/login'>Login</Link></h6>
                         <div className="d-grid col-12 mt-3">
-                            <Button
+                            <ColorButton
                                 type="submit"
                                 variant="contained">
                                 Register
-                            </Button>
+                            </ColorButton>
                         </div>
                     </form>
                     <div className="text-center mt-2">
                         <h6>Or</h6>
                         {/* On Click */}
-                        <Button onClick={handleGoogleLogin} variant="outlined"><img width="40px" src={icon1} alt="" /><span className="fw-bold px-3">Register with Google</span></Button>
+                        <ColorButton onClick={handleGoogleLogin} variant="contained"><img width="40px" src={icon1} alt="" /><span className="fw-bold px-3">Register with Google</span></ColorButton>
                     </div>
                 </div>
             </div>

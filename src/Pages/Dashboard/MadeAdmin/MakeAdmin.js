@@ -1,7 +1,10 @@
-import { Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import React, { useState } from 'react';
+import useAuth from '../../../Hooks/useAuth/useAuth';
 
 const MakeAdmin = () => {
+    const { allContext } = useAuth();
+    const { ColorButton } = allContext;
     const [email, setEmail] = useState('');
 
     const handleOnChange = e => {
@@ -26,12 +29,12 @@ const MakeAdmin = () => {
                         setEmail('');
                     }
                 })
-            
+
         }
     }
     return (
         <div style={{ marginTop: '280px', marginBottom: '280px' }} className="text-center">
-            <h1 className="mb-5">Make an Admin</h1>
+            <h1 className="mb-5">Make an <span className="text-color">Admin</span></h1>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
                     sx={{ width: '40%' }}
@@ -41,7 +44,7 @@ const MakeAdmin = () => {
                     type="email"
                     value={email}
                     autoComplete="email" variant="standard" />
-                <Button type="submit" variant="contained">MAKE ADMIN</Button>
+                <ColorButton type="submit" variant="contained">MAKE ADMIN</ColorButton>
             </form>
         </div>
     );

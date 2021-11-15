@@ -8,7 +8,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading} = allContext;
     if (isLoading) {
         return <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
-            <CircularProgress />
+            <CircularProgress sx={{ color: '#EC9C31' }} />
         </Box>
     }
     return (

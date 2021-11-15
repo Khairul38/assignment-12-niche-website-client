@@ -1,3 +1,4 @@
+import { Box, CircularProgress } from '@mui/material';
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import useProducts from '../../Hooks/useProducts/useProducts';
@@ -7,7 +8,12 @@ import ProductItem from '../Item/ProductItem';
 import './Products.css';
 
 const Products = () => {
-    const { products } = useProducts();
+    const { products, loading } = useProducts();
+    if (loading) {
+        return <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
+            <CircularProgress sx={{ color: '#EC9C31' }} />
+        </Box>
+    }
     return (
         <div>
             <Header></Header>

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut, onAuthStateChanged } from "firebase/auth";
 import initializeFirebase from '../../Firebase/Firebase.init';
+import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { orange } from '@mui/material/colors';
 
 initializeFirebase();
 
@@ -8,6 +11,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
@@ -124,14 +128,23 @@ const useFirebase = () => {
 
     /* Find Admin */
     useEffect(() => {
-        // setIsLoading(true);
+        setLoading(true);
         fetch(`https://aqueous-stream-28542.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
-        // .finally(() => setIsLoading(false));
+            .finally(() => setLoading(false));
     }, [user.email])
 
-    return { user, error, admin, isLoading, setError, setUser, setUserName, setIsLoading, loginUsingGoogle, handleRegistration, handleLogin, logout }
+    // Customized Button
+    const ColorButton = styled(Button)(({ theme }) => ({
+        color: theme.palette.getContrastText(orange[200]),
+        backgroundColor: orange[200],
+        '&:hover': {
+            backgroundColor: orange[300],
+        },
+    }));
+
+    return { user, error, admin, isLoading, ColorButton, loading, setError, setUser, setUserName, setIsLoading, loginUsingGoogle, handleRegistration, handleLogin, logout }
 };
 
 export default useFirebase;

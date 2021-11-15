@@ -11,7 +11,7 @@ const OrderDetails = () => {
     const { register, handleSubmit, reset } = useForm();
     const { orderId } = useParams();
     const { products, allContext } = useAuth();
-    const { user } = allContext;
+    const { user, ColorButton } = allContext;
 
     const orderData = products.find(product => product._id === orderId);
 
@@ -48,7 +48,9 @@ const OrderDetails = () => {
                         <input placeholder="Address" defaultValue="" {...register("address", { required: true })} />
                         <input placeholder="City" defaultValue="" {...register("city", { required: true })} />
                         <input placeholder="Phone number" type="number" defaultValue="" {...register("phone", { required: true })} />
-                        <button className="btn btn-primary" type="submit">Place Order</button>
+                        <ColorButton sx={{ width: '100%', mt: 2 }}
+                            type="submit"
+                            variant="contained">PLACE ORDER</ColorButton>
                     </form>
                 </div>
             </div>

@@ -4,7 +4,6 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import { Button } from '@mui/material';
 import loginImg from '../../Images/main-home-banner-01.jpg'
 
 const Login = () => {
@@ -12,7 +11,7 @@ const Login = () => {
     const { allContext } = useAuth();
     const {
         loginUsingGoogle,
-        handleLogin,
+        handleLogin, ColorButton,
         error } = allContext;
 
     /* Redirect */
@@ -76,17 +75,17 @@ const Login = () => {
                         </div>
                         <h6>Don’t have an account? <Link to='/register'>Register</Link></h6>
                         <div className="d-grid col-12 mt-3">
-                            <Button
+                            <ColorButton
                                 type="submit"
                                 variant="contained">
                                 LOGIN
-                            </Button>
+                            </ColorButton>
                         </div>
                     </form>
                     <div className="text-center mt-2">
                         <h6>Or</h6>
                         {/* On Click */}
-                        <Button onClick={handleGoogleLogin} variant="outlined"><img width="40px" src={icon1} alt="" /><span className="fw-bold px-3">Login with Google</span></Button>
+                        <ColorButton onClick={handleGoogleLogin} variant="contained"><img width="40px" src={icon1} alt="" /><span className="fw-bold px-3">Login with Google</span></ColorButton>
                     </div>
                 </div>
             </div>

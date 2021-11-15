@@ -1,7 +1,10 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const ManageOrderItem = (props) => {
+    const { allContext } = useAuth();
+    const { ColorButton } = allContext;
     const { img, name, price } = props.order.product;
     const { _id, email, address, phone, status } = props.order;
     return (
@@ -19,9 +22,13 @@ const ManageOrderItem = (props) => {
                             <h6>Status: <span className="text-color">{status}</span></h6>
                             <h4><span className="text-color">${price}</span></h4>
                         </div>
-                        <div className="d-flex justify-content-around align-items-center">
-                            <button onClick={() => props.handleDeleteProduct(_id)} type="button" className="btn btn-outline-primary btn-sm">Cancel</button>
-                            <button onClick={() => props.handleUpdateStatus(_id)} type="button" className="btn btn-outline-primary btn-sm">Status Update</button>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <ColorButton onClick={() => props.handleDeleteProduct(_id)} variant="contained" size="small">
+                                Cancel
+                            </ColorButton>
+                            <ColorButton onClick={() => props.handleUpdateStatus(_id)} variant="contained" size="small">
+                                Status Update
+                            </ColorButton>
                         </div>
                     </Card.Body>
                 </Card>

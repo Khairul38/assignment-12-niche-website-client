@@ -1,7 +1,10 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const ManageProductItem = (props) => {
+    const { allContext } = useAuth();
+    const { ColorButton } = allContext;
     const { _id, img, name, description, price } = props.product;
     return (
         <div>
@@ -14,10 +17,9 @@ const ManageProductItem = (props) => {
                             <p>{description}</p>
                         </div>
                         <div className="d-flex justify-content-between align-items-center">
-                            {/* <HashLink smooth to={`/order/${_id}#`}>
-                                <button type="button" className="btn btn-outline-primary btn-sm">Buy Now</button>
-                            </HashLink> */}
-                            <button onClick={() => props.handleDeleteProduct(_id)} type="button" className="btn btn-outline-primary btn-sm">Delete</button>
+                            <ColorButton onClick={() => props.handleDeleteProduct(_id)} variant="contained" size="small">
+                                Delete
+                            </ColorButton>
                             <h4><span className="text-color">${price}</span></h4>
                         </div>
                     </Card.Body>
