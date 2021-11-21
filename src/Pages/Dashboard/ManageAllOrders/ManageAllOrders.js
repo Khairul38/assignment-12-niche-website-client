@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import ManageOrderItem from '../../Item/ManageOrderItem';
-import './ManageAllOrders.css'
+import './ManageAllOrders.css';
+import { Box, CircularProgress } from '@mui/material';
 
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://aqueous-stream-28542.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
+            .finally(() => setLoading(false));
     }, [orders])
 
     // Update Status
@@ -56,15 +59,20 @@ const ManageAllOrders = () => {
                 <h1>MANAGE ALL <span className="text-color fw-bold">ORDERS</span></h1>
                 <h5>ONLY ADMIN CAN HANDEL THIS</h5>
             </div>
-            <div className="container">
-                <div className="container my-5">
-                    <Row xs={1} md={3} className="g-5 p-4">
-                        {
-                            orders.map(order => <ManageOrderItem key={order._id} order={order} handleDeleteProduct={handleDeleteProduct} handleUpdateStatus={handleUpdateStatus}></ManageOrderItem>)
-                        }
-                    </Row>
-                </div>
-            </div>
+            {loading ?
+                <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
+                    <CircularProgress sx={{ color: '#EC9C31' }} />
+                </Box>
+                :
+                <div className="container">
+                    <div className="container my-5">
+                        <Row xs={1} md={3} className="g-5 p-4">
+                            {
+                                orders.map(order => <ManageOrderItem key={order._id} order={order} handleDeleteProduct={handleDeleteProduct} handleUpdateStatus={handleUpdateStatus}></ManageOrderItem>)
+                            }
+                        </Row>
+                    </div>
+                </div>}
         </div>
     );
 };

@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import PaymentsIcon from '@mui/icons-material/Payments';
+// import PaymentsIcon from '@mui/icons-material/Payments';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -38,6 +38,7 @@ import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders';
 import AdminRoute from '../../../AdminRoute/AdminRoute';
 import Footer from '../../Footer/Footer';
+import DashNotFound from '../DashNotFound/DashNotFound';
 
 const drawerWidth = 230;
 
@@ -104,7 +105,7 @@ function Dashboard(props) {
                             </ListItemText>
                         </ListItem>
                     </Link>
-                    <Link style={{ textDecoration: 'none', color: '#EC9C31' }} to={`${url}/pay`}>
+                    {/* <Link style={{ textDecoration: 'none', color: '#EC9C31' }} to={`${url}/pay`}>
                         <ListItem button>
                             <ListItemIcon sx={{ color: 'black' }}>
                                 <PaymentsIcon />
@@ -113,7 +114,7 @@ function Dashboard(props) {
                                 Pay
                             </ListItemText>
                         </ListItem>
-                    </Link>
+                    </Link> */}
                     <Link style={{ textDecoration: 'none', color: '#EC9C31' }} to={`${url}/review`}>
                         <ListItem button>
                             <ListItemIcon sx={{ color: 'black' }}>
@@ -261,7 +262,7 @@ function Dashboard(props) {
                     <Route path={`${path}/myOrders`}>
                         <MyOrders></MyOrders>
                     </Route>
-                    <Route path={`${path}/pay`}>
+                    <Route path={`${path}/pay/:orderId`}>
                         <Pay></Pay>
                     </Route>
                     <Route path={`${path}/review`}>
@@ -279,6 +280,9 @@ function Dashboard(props) {
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
                     </AdminRoute>
+                    <Route path={`${path}/*`}>
+                        <DashNotFound></DashNotFound>
+                    </Route>
                 </Switch>
                 <Footer></Footer>
             </Box>

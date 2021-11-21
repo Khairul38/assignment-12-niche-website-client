@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth/useAuth';
@@ -12,6 +12,7 @@ const OrderDetails = () => {
     const { orderId } = useParams();
     const { products, allContext } = useAuth();
     const { user, ColorButton } = allContext;
+    const history = useHistory();
 
     const orderData = products.find(product => product._id === orderId);
 
@@ -24,6 +25,7 @@ const OrderDetails = () => {
                 if (res.data.insertedId) {
                     alert('Order Processed Successfully');
                     reset();
+                    history.push('/dashboard/myOrders');
                 }
             })
     };

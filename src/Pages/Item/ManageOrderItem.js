@@ -6,7 +6,7 @@ const ManageOrderItem = (props) => {
     const { allContext } = useAuth();
     const { ColorButton } = allContext;
     const { img, name, price } = props.order.product;
-    const { _id, email, address, phone, status } = props.order;
+    const { _id, email, address, phone, status, payment } = props.order;
     return (
         <div>
             <Col className="shadow-lg">
@@ -21,6 +21,9 @@ const ManageOrderItem = (props) => {
                             <h6>Contact: {phone}</h6>
                             <h6>Status: <span className="text-color">{status}</span></h6>
                             <h4><span className="text-color">${price}</span></h4>
+                            {payment ? <h6 className="text-success">PAID</h6>
+                                :
+                                <h6 className="text-danger">NOT PAID</h6>}
                         </div>
                         <div className="d-flex justify-content-between align-items-center">
                             <ColorButton onClick={() => props.handleDeleteProduct(_id)} variant="contained" size="small">
