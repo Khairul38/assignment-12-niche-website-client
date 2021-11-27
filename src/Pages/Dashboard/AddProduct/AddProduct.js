@@ -23,18 +23,19 @@ const AddProduct = () => {
         }
     };
     return (
-        <div className="banner-addProduct banner-as add-products text-center">
-            <h1>Please Add New Product</h1>
-            <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true })} placeholder="Name" />
-                <textarea className="massage" {...register("description", { required: true })} placeholder="Description" />
-                <input type="number" {...register("price", { required: true })} placeholder="Price" />
-                <input {...register("img", { required: true })} placeholder="Image URL" />
-
-                <ColorButton sx={{ width: '200%', mt: 3 }}
-                    type="submit"
-                    variant="contained">ADD PRODUCT</ColorButton>
-            </form>
+        <div className="banner-addProduct add-products text-center">
+            <div className="banner-as">
+                <h1>Please Add New Product</h1>
+                <form className="mt-5" onSubmit={handleSubmit(onSubmit)}>
+                    <input {...register("name", { required: true })} placeholder="Name" />
+                    <textarea className="massage" {...register("description", { required: true })} placeholder="Description" />
+                    <input type="number" {...register("price", { required: true })} placeholder="Price" />
+                    <input style={{ border: '2px solid #EC9C31'}} type="file" {...register("image", { required: true })} />
+                    <ColorButton sx={{ width: '100%', mt: 3 }}
+                        type="submit"
+                        variant="contained">ADD PRODUCT</ColorButton>
+                </form>
+            </div>
         </div>
     );
 };

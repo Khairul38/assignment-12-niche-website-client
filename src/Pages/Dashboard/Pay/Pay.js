@@ -4,7 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import CheckoutForm from './CheckoutForm';
 
-
+const [count, setCount] = useState(10)
+const handleCount = () => {
+    setCount(10)
+}
+console.log(handleCount);
 
 const stripePromise = loadStripe('pk_test_51JwpyXE9bvNoZqGxSOyaUnwGRJuOid2B0ySrIvEmebeRKlByun2uAzwXjwfVFENz4gIzUUVmmrUPblloT3kaaVjQ00FTLDjV15')
 

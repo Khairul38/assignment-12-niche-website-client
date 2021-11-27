@@ -1,4 +1,4 @@
-.banner-addProduct {
+.banner-review {
     background-image: url(../../../Images/allbookingsAS.jpg);
     background-position: center;
     background-size: cover;
@@ -6,21 +6,21 @@
     margin-bottom: -100px;
 }
 
-.banner-as {
+.banner-rs {
     padding: 100px 0px;
 }
 
-.add-products form {
+.add-reviews form {
     display: inline-flex;
     flex-direction: column;
-    padding: 50px 100px;
+    padding: 50px 150px;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.829);
     border-radius: 20px;
 }
 
-.add-products form input, .massage {
-    width: 120%;
+.add-reviews form input, .text {
+    width: 200%;
     margin-bottom: 15px;
     padding: 10px;
     border-color: #EC9C31;
