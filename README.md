@@ -2,10 +2,12 @@
 
 Our Live Website [Oobliss](https://niche-website-49a8d.web.app/).
 
-### * Full-stack Niche Website
+### ● Oobliss is a niche product-related MERN stack website.
 
-### * A complete website with google and email password login and registration feature. This website has also protected pages. Only logged-in or registered users can see these pages.
+### ● An authentication system is added to this website so that users can login, if the user login they can buy products and manage their orders.
 
-### * Form to leave a review for users to show the homepage. User also cancels their orders.
+### ● The users will be able to give reviews and the review will be displayed on the home page.
 
-### * There is a dashboard to manage the admin panel and user panel, where an admin can add or remove a product and able to manage the orders. Users can buy products with a payment system.
+### ● Admin system added to this website. The admin can make another user admin, also the admin can add a new product or delete the product, and they will be also able to update the pending order to shipped.
+
+### ● Technology Used: HTML | CSS | Bootstrap | React Bootstrap | Material UI | React Router | React hook form | React.js | Node.js | Express.js | MongoDB | Firebase
