@@ -70,7 +70,7 @@ function Dashboard(props) {
                             <HomeIcon />
                         </ListItemIcon>
                         <ListItemText>
-                            Home
+                            <h6 className="my-0">Home</h6>
                         </ListItemText>
                     </ListItem>
                 </Link>
@@ -79,8 +79,8 @@ function Dashboard(props) {
                         <ListItemIcon sx={{ color: 'black' }}>
                             <DashboardIcon />
                         </ListItemIcon>
-                        <ListItemText >
-                            Dashboard
+                        <ListItemText>
+                            <h6 className="my-0">Dashboard</h6>
                         </ListItemText>
                     </ListItem>
                 </Link>
@@ -90,7 +90,7 @@ function Dashboard(props) {
                             <AddShoppingCartIcon />
                         </ListItemIcon>
                         <ListItemText >
-                            Products
+                            <h6 className="my-0">Products</h6>
                         </ListItemText>
                     </ListItem>
                 </Link>
@@ -101,7 +101,7 @@ function Dashboard(props) {
                                 <ShoppingCartIcon />
                             </ListItemIcon>
                             <ListItemText >
-                                My Orders
+                                <h6 className="my-0">My Orders</h6>
                             </ListItemText>
                         </ListItem>
                     </Link>
@@ -121,7 +121,7 @@ function Dashboard(props) {
                                 <ReviewsIcon />
                             </ListItemIcon>
                             <ListItemText >
-                                Review
+                                <h6 className="my-0">Review</h6>
                             </ListItemText>
                         </ListItem>
                     </Link>
@@ -134,7 +134,7 @@ function Dashboard(props) {
                                     <SettingsApplicationsIcon />
                                 </ListItemIcon>
                                 <ListItemText >
-                                    Manage All Orders
+                                    <h6 className="my-0">Manage All Orders</h6>
                                 </ListItemText>
                             </ListItem>
                         </Link>
@@ -144,7 +144,7 @@ function Dashboard(props) {
                                     <SettingsIcon />
                                 </ListItemIcon>
                                 <ListItemText >
-                                    Manage Products
+                                    <h6 className="my-0">Manage Products</h6>
                                 </ListItemText>
                             </ListItem>
                         </Link>
@@ -154,7 +154,7 @@ function Dashboard(props) {
                                     <AddCircleIcon />
                                 </ListItemIcon>
                                 <ListItemText >
-                                    Add Product
+                                    <h6 className="my-0">Add Product</h6>
                                 </ListItemText>
                             </ListItem>
                         </Link>
@@ -164,7 +164,7 @@ function Dashboard(props) {
                                     <AdminPanelSettingsIcon />
                                 </ListItemIcon>
                                 <ListItemText >
-                                    Make Admin
+                                    <h6 className="my-0">Make Admin</h6>
                                 </ListItemText>
                             </ListItem>
                         </Link>
