@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useReviews = () => {
-    const [reviews, setReviews] = useState([]);
-    useEffect(() => {
-        fetch('https://aqueous-stream-28542.herokuapp.com/reviews')
-            .then(res => res.json())
-            .then(data => setReviews(data));
-    }, []);
-    return { reviews };
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    fetch("https://assignment-12-niche-website-server.vercel.app/reviews")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+  return { reviews };
 };
 
 export default useReviews;
