@@ -99,7 +99,7 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    /* Get the currently signed -in user */
+    /* Get the currently signed-in user */
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
             if (user) {

@@ -21,7 +21,7 @@ const Pay = () => {
             <h1>PAYMENT SYSTEM</h1>
             <h4>User Name: {order.name}</h4>
             <h4>User Email: {order.email}</h4>
-            <h4>Total Payment: ${order?.product?.price}</h4>
+            <h4>Total Paymen: ${order?.product?.price}</h4>
             {order?.product?.price && <Elements stripe={stripePromise}>
                 <CheckoutForm order={order} />
             </Elements>}
