@@ -11,7 +11,7 @@ const ManageProducts = () => {
   const handleDeleteProduct = (id) => {
     const proceed = window.confirm("Are You Sure, You Want To Delete");
     if (proceed) {
-      const url = `https://assignment-12-niche-website-server.vercel.app/products/${id}`;
+      const url = `${process.env.REACT_APP_API_BASE_URL}/products/${id}`;
       fetch(url, {
         method: "DELETE",
       })

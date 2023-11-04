@@ -16,10 +16,7 @@ const Review = () => {
     if (proceed) {
       data.img = user.photoURL;
       axios
-        .post(
-          "https://assignment-12-niche-website-server.vercel.app/reviews",
-          data
-        )
+        .post(`${process.env.REACT_APP_API_BASE_URL}/reviews`, data)
         .then((res) => {
           if (res.data.insertedId) {
             alert("Review Successfully Added");

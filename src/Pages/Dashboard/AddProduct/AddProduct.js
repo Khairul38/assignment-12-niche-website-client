@@ -11,13 +11,15 @@ const AddProduct = () => {
   const { ColorButton } = allContext;
 
   const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("description", data.description);
+    formData.append("price", data.price);
+    formData.append("image", data.image[0]);
     const proceed = window.confirm("Are You Sure, You Want To Add Product");
     if (proceed) {
       axios
-        .post(
-          "https://assignment-12-niche-website-server.vercel.app/products",
-          data
-        )
+        .post(`${process.env.REACT_APP_API_BASE_URL}/products`, formData)
         .then((res) => {
           if (res.data.insertedId) {
             alert("Product Successfully Added");
@@ -45,6 +47,7 @@ const AddProduct = () => {
           <input
             style={{ border: "2px solid #EC9C31" }}
             type="file"
+            accept="image/*"
             {...register("image", { required: true })}
           />
           <ColorButton

@@ -14,7 +14,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://assignment-12-niche-website-server.vercel.app/orders")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/orders`)
       .then((res) => res.json())
       .then((data) => {
         const myOrder = data.filter((order) => order.email === user.email);
@@ -27,7 +27,7 @@ const MyOrders = () => {
   const handleDeleteProduct = (id) => {
     const proceed = window.confirm("Are You Sure, You Want To Cancel");
     if (proceed) {
-      const url = `https://assignment-12-niche-website-server.vercel.app/orders/${id}`;
+      const url = `${process.env.REACT_APP_API_BASE_URL}/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })

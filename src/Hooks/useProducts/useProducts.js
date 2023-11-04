@@ -6,7 +6,7 @@ const useProducts = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    fetch("https://assignment-12-niche-website-server.vercel.app/products")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/products`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .finally(() => setLoading(false));

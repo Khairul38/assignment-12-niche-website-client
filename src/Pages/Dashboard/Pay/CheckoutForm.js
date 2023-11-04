@@ -15,16 +15,13 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch(
-      "https://assignment-12-niche-website-server.vercel.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/create-payment-intent`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -78,7 +75,7 @@ const CheckoutForm = ({ order }) => {
         last4: paymentMethod.card.last4,
         transaction: paymentIntent.id,
       };
-      const url = `https://assignment-12-niche-website-server.vercel.app/orders/${order._id}/payment`;
+      const url = `${process.env.REACT_APP_API_BASE_URL}/orders/${order._id}/payment`;
       fetch(url, {
         method: "PUT",
         headers: {

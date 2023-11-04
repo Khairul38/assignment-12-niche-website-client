@@ -15,16 +15,13 @@ const MakeAdmin = () => {
     const proceed = window.confirm("Are You Sure, You Want To Make Admin");
     if (proceed) {
       const user = { email };
-      fetch(
-        "https://assignment-12-niche-website-server.vercel.app/users/admin",
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      )
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/users/admin`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount) {

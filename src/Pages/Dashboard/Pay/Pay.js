@@ -13,9 +13,7 @@ const Pay = () => {
   const [order, setOrder] = useState({});
 
   useEffect(() => {
-    fetch(
-      `https://assignment-12-niche-website-server.vercel.app/orders/${orderId}`
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/orders/${orderId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [orderId]);

@@ -21,10 +21,7 @@ const OrderDetails = () => {
     data.status = "Pending";
 
     axios
-      .post(
-        "https://assignment-12-niche-website-server.vercel.app/orders",
-        data
-      )
+      .post(`${process.env.REACT_APP_API_BASE_URL}/orders`, data)
       .then((res) => {
         if (res.data.insertedId) {
           alert("Order Processed Successfully");
@@ -38,7 +35,15 @@ const OrderDetails = () => {
       <Header></Header>
       <div className="container my-5 row mx-auto align-items-center">
         <div className="col-lg-8">
-          <img className="w-100" src={orderData?.img} alt="" />
+          <img
+            className="w-100"
+            src={
+              orderData?.img
+                ? orderData?.img
+                : `data:image/*;base64,${orderData?.image}`
+            }
+            alt=""
+          />
           <h1 className=" fw-bold text-color mt-3">{orderData?.name}</h1>
           <p>{orderData?.description}</p>
           <h4>

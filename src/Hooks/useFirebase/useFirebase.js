@@ -124,7 +124,7 @@ const useFirebase = () => {
   /* Save user to database */
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://assignment-12-niche-website-server.vercel.app/users", {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/users`, {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -136,9 +136,7 @@ const useFirebase = () => {
   /* Find Admin */
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `https://assignment-12-niche-website-server.vercel.app/users/${user.email}`
-    )
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin))
       .finally(() => setLoading(false));

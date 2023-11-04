@@ -9,7 +9,7 @@ const ManageAllOrders = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://assignment-12-niche-website-server.vercel.app/orders")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .finally(() => setLoading(false));
@@ -19,7 +19,7 @@ const ManageAllOrders = () => {
   const handleUpdateStatus = (id) => {
     const proceed = window.confirm("Are You Sure, You Want To Update");
     if (proceed) {
-      const url = `https://assignment-12-niche-website-server.vercel.app/orders/${id}`;
+      const url = `${process.env.REACT_APP_API_BASE_URL}/orders/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -39,7 +39,7 @@ const ManageAllOrders = () => {
   const handleDeleteProduct = (id) => {
     const proceed = window.confirm("Are You Sure, You Want To Cancel");
     if (proceed) {
-      const url = `https://assignment-12-niche-website-server.vercel.app/orders/${id}`;
+      const url = `${process.env.REACT_APP_API_BASE_URL}/orders/${id}`;
       fetch(url, {
         method: "DELETE",
       })
