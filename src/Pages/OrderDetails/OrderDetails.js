@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import "./OrderDetails.css";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import Loading from "../../component/Loading";
 
 const OrderDetails = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -30,20 +31,14 @@ const OrderDetails = () => {
         }
       });
   };
+
+  if (!orderData) return <Loading />;
   return (
     <div>
       <Header></Header>
       <div className="container my-5 row mx-auto align-items-center">
         <div className="col-lg-8">
-          <img
-            className="w-100"
-            src={
-              orderData?.img
-                ? orderData?.img
-                : `data:image/*;base64,${orderData?.image}`
-            }
-            alt=""
-          />
+          <img className="w-100" src={orderData?.img} alt="" />
           <h1 className=" fw-bold text-color mt-3">{orderData?.name}</h1>
           <p>{orderData?.description}</p>
           <h4>

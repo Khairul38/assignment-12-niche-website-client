@@ -5,17 +5,16 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import "./ProductItem.css";
 
 const ProductItem = (props) => {
-  const { _id, img, name, description, price, image } = props.product;
+  const { _id, img, name, description, price } = props.product;
   const { allContext } = useAuth();
   const { ColorButton } = allContext;
-  console.log(props);
   return (
     <div>
       <Col className="shadow-lg text-center">
         <Card className="hover-card">
           <Card.Img
             variant="top"
-            src={img ? img : `data:image/*;base64,${image}`}
+            src={img}
           />
           <Card.Body>
             <Card.Title className="text-color">{name}</Card.Title>

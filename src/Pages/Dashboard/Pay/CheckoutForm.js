@@ -44,6 +44,7 @@ const CheckoutForm = ({ order }) => {
     if (error) {
       setError(error.message);
       setSuccess("");
+      setProcessing(false);
     } else {
       setError("");
       // console.log(paymentMethod);
@@ -63,6 +64,7 @@ const CheckoutForm = ({ order }) => {
     if (intentError) {
       setError(intentError.message);
       setSuccess("");
+      setProcessing(false);
     } else {
       setError("");
       setSuccess("Your payment processed successfully");
@@ -115,7 +117,7 @@ const CheckoutForm = ({ order }) => {
             <ColorButton
               sx={{ my: 5 }}
               type="submit"
-              disabled={!stripe || success}
+              disabled={!stripe || success.length > 0}
               variant="contained"
             >
               Pay

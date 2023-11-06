@@ -3,20 +3,22 @@ import { loadStripe } from "@stripe/stripe-js";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CheckoutForm from "./CheckoutForm";
+import Loading from "../../../component/Loading";
 
-const stripePromise = loadStripe(
-  "pk_test_51JwpyXE9bvNoZqGxSOyaUnwGRJuOid2B0ySrIvEmebeRKlByun2uAzwXjwfVFENz4gIzUUVmmrUPblloT3kaaVjQ00FTLDjV15"
-);
+const stripePromise = loadStripe(`${process.env.REACT_APP_PAYMENT_STRIPE_PK}`);
 
 const Pay = () => {
   const { orderId } = useParams();
-  const [order, setOrder] = useState({});
+  const [order, setOrder] = useState(undefined);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/orders/${orderId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [orderId]);
+
+  if (!order) return <Loading />;
+
   return (
     <div
       style={{ marginTop: "200px", marginBottom: "200px", textAlign: "center" }}
