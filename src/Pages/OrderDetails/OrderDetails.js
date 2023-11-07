@@ -6,13 +6,15 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import "./OrderDetails.css";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import useProducts from "../../Hooks/useProducts/useProducts";
 import Loading from "../../component/Loading";
 
 const OrderDetails = () => {
   const { register, handleSubmit, reset } = useForm();
   const { orderId } = useParams();
-  const { products, allContext } = useAuth();
+  const { allContext } = useAuth();
   const { user, ColorButton } = allContext;
+  const { products } = useProducts();
   const history = useHistory();
 
   const orderData = products.find((product) => product._id === orderId);
@@ -33,6 +35,7 @@ const OrderDetails = () => {
   };
 
   if (!orderData) return <Loading />;
+
   return (
     <div>
       <Header></Header>
